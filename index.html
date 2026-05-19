@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>archlinux</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="boot-screen" class="screen">
+    <div id="boot-scroll" class="scroll">
+      <pre id="boot-log" class="log"></pre>
+      <div id="boot-footer" class="footer hidden">
+        <pre id="login-banner" class="banner"></pre>
+        <div class="prompt-line">
+          <span class="prompt">[guest@archlinux ~]$ </span>
+          <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false" placeholder="start" aria-label="command input">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-terminal" class="screen hidden">
+    <div class="terminal-body">
+      <div id="terminal-output" class="terminal-output"></div>
+      <div class="prompt-line">
+        <span class="prompt">[guest@archlinux ~]$ </span>
+        <input type="text" id="main-input" class="cmd-input" autocomplete="off" spellcheck="false" aria-label="portfolio command input">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #000000;
+  color: #cccccc;
+  font-family: 'Courier New', 'Fira Code', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.35;
+  overflow: hidden;
+}
+
+/* CRT scanline overlay — fixed, non-interactive, low opacity */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  opacity: 0.25;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+#boot-screen {
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+#boot-screen .scroll {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.scroll {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.log {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.footer.hidden {
+  display: none;
+}
+
+.banner {
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+/* inline TTY prompt — same metrics as terminal body */
+.prompt-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.prompt {
+  flex-shrink: 0;
+  color: #00ff00;
+}
+
+.cmd-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  caret-color: #00ff00;
+}
+
+.cmd-input::placeholder {
+  color: #555555;
+}
+
+/* idle hint — faint, non-intrusive */
+.terminal-hint {
+  position: fixed;
+  bottom: 36px;
+  left: 12px;
+  color: #3a3a3a;
+  font-family: 'Courier New', 'Fira Code', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  line-height: 1.35;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.terminal-hint.hidden {
+  display: none;
+}
+
+.log .ok {
+  color: #00ff00;
+}
+
+.log .warn {
+  color: #ffff00;
+}
+
+.log .fail {
+  color: #ff0000;
+}
+
+.log .dim {
+  color: #888888;
+}
+
+.log .white {
+  color: #ffffff;
+}
+
+.cmd-output {
+  color: #cccccc;
+}
+
+.cmd-error {
+  color: #ff0000;
+}
+
+/* main terminal — single scroll column, prompt in document flow */
+
+#main-terminal {
+  overflow: hidden;
+}
+
+.terminal-body {
+  height: 100%;
+  max-width: 960px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.terminal-output {
+  margin: 0;
+  padding: 0;
+}
+
+.out-block {
+  margin-bottom: 14px;
+}
+
+.out-line {
+  color: #cccccc;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.out-line.dim {
+  color: #888888;
+}
+
+.out-line.title {
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.out-pre {
+  color: #cccccc;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.out-pre.tree {
+  color: #00ff00;
+}
+
+.out-pre.logo {
+  color: #00ff00;
+  line-height: 1.1;
+}
+
+.out-line.name {
+  color: #aaaaaa;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.out-line.out-error {
+  color: #ff0000;
+}
+
+.out-links {
+  color: #cccccc;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.term-link {
+  color: #00ff00;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.term-link:hover,
+.term-link:focus {
+  color: #ffffff;
+  background: #003300;
+  outline: none;
+}
+
+.term-link:visited {
+  color: #00aa00;
+}
+
+/* easter egg: ASCII dance video */
+.easter-dance {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: #000000;
+  pointer-events: none;
+  vertical-align: top;
+}
