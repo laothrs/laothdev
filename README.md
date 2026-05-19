@@ -22,4 +22,6 @@ Then visit http://localhost:8080
 
 Pushes to `main` trigger the GitHub Actions workflow (`.github/workflows/deploy.yml`) and deploy to GitHub Pages automatically.
 
-**Repository settings:** Settings → Pages → Build and deployment → Source: **GitHub Actions**
+**Repository settings (if deploy fails):** Settings → Pages → Build and deployment → Source: **GitHub Actions**
+
+The workflow also sets `enablement: true` to auto-enable Pages when possible.
